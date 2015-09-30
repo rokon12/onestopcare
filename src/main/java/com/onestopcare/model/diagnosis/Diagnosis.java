@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @since 9/30/15.
  */
 @Entity
-public class Diagnosis extends PersistenceObject {
+public class Diagnosis extends PersistenceObject<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  */
 
 @MappedSuperclass
-public class PersistenceObject implements Serializable {
+public abstract class PersistenceObject<ID extends Number & Comparable> implements Serializable {
 
     @Version
     private Long version;
@@ -66,4 +66,6 @@ public class PersistenceObject implements Serializable {
         this.dateLastModified = dateLastModified;
         return this;
     }
+
+    public abstract ID getId();
 }

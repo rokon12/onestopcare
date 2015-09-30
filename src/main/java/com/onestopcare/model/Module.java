@@ -9,11 +9,11 @@ import java.util.Set;
  * @since 9/30/15.
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Module extends PersistenceObject {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Module extends PersistenceObject<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
@@ -24,7 +24,7 @@ public abstract class Module extends PersistenceObject {
     private Organization organization;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinTable(name = "MODULE_PATIENTS",
+    @JoinTable(name = "MODULES_PATIENTS_LNK",
             joinColumns = @JoinColumn(name = "MODULE_ID", referencedColumnName = "ID", unique = false),
             inverseJoinColumns = @JoinColumn(name = "PATIENT_ID", referencedColumnName = "ID", unique = false))
     private Set<Patient> patients = new HashSet<>();
