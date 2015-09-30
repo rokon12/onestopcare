@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <h1 class="page-header "><i class="fa fa-tachometer"></i> Dashboard</h1>
+
+
+        <p:dialog header="Effects" modal="true" widgetVar="dlg3" height="200">
+            <h:outputText value="This dialog has nice effects."/>
+        </p:dialog>
+
+        <p:layout style="min-width:400px;min-height:200px;">
+
+            <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+                <p:commandButton value="Login" type="button" onclick="PF('dlg3').show();"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h:form id="form">
+                    <p:growl id="msgs" showDetail="true"/>
+
+                    <p:outputLabel for="button" value="Button:"/>
+                    <p:calendar id="button" showOn="button"/>
+
+                    <p:commandButton value="Submit" update="msgs"  icon="ui-icon-check" />
+
+                </h:form>
+
+            </p:layoutUnit>
+        </p:layout>
+
+    </ui:define>
+</ui:composition>
+
